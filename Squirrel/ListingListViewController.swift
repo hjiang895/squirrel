@@ -31,6 +31,20 @@ class ListingListViewController: UIViewController {
         
         
         listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
+            self.tableView.reloadData()
+        }
+        
+        for listing in self.listings.locationListingArray {
+            self.photos.loadData(listing: listing){
+                self.pictionary[listing.documentID] = self.photos.photo
+            }
+        }
+//        for listing in self.listings.locationListingArray {
+//            self.photos.loadData(listing: listing){
+//                self.pictionary[listing.documentID] = self.photos.photo
+//            }
+//        }
+       // listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
             //print("successfully loaded your array")
             //print ("Size of locListingArray: \(self.listings.locationListingArray.count)")
             //            for listing in self.listings.locationListingArray {
@@ -39,7 +53,7 @@ class ListingListViewController: UIViewController {
             //                self.pictionary[listing.documentID] = self.photos.photo
             //            }
             //self.tableView.reloadData()
-        }
+    //    }
         
         
         self.tableView.reloadData()
@@ -55,15 +69,12 @@ class ListingListViewController: UIViewController {
         
         //          photos.loadData(listing: listing) {
         //              print("Photo loaded!")
-        listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {}
-        //print("successfully loaded your array")
-        //print ("Size of locListingArray: \(self.listings.locationListingArray.count)")
-        for listing in self.listings.locationListingArray {
-            //print("boofy beef")
-            self.photos.loadData(listing: listing){
-                self.pictionary[listing.documentID] = self.photos.photo
-            }
-        }
+//        listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {}
+//        for listing in self.listings.locationListingArray {
+//            self.photos.loadData(listing: listing){
+//                self.pictionary[listing.documentID] = self.photos.photo
+//            }
+//        }
         self.tableView.reloadData()
     }
     
@@ -106,28 +117,27 @@ extension ListingListViewController: UITableViewDataSource, UITableViewDelegate 
         }
         
         print("Loading image to cell")
-        /*let blank = Photo()
-         blank.image = UIImage(named: "squirrel") ?? UIImage()
-         self.image = pictionary[listing.documentID] ?? blank*/
         
-        if pictionary[listing.documentID] == nil {
-            print("couldnt find picto vals - pulling from db")
+        let blank = Photo()
+        blank.image = UIImage(named: "squirrel") ?? UIImage()
+        self.image = pictionary[listing.documentID] ?? blank
+        
+        /*if pictionary[listing.documentID] == nil {
             photos.loadData(listing: listing) {}
             self.image = self.photos.photo
             pictionary[listing.documentID] = self.image
         } else {
-            print("found picto values")
             self.image = pictionary[listing.documentID]!
-        }
+        }*/
         
         
         //self.image = self.photos.photo
         
         
-        photos.loadData(listing: listing){
+        /*photos.loadData(listing: listing){
         }
         self.image = self.photos.photo
-        pictionary[listing.documentID] = self.image
+        pictionary[listing.documentID] = self.image*/
         
         cell.configureCell(listing: listings.locationListingArray[indexPath.row], photo: self.image)
         return cell

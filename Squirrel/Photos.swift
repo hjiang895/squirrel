@@ -39,7 +39,7 @@ class Photos {
                    
                    // Loading in Firebase Storage images
                    let photoRef = storageRef.child(picture.documentUUID)
-                   photoRef.getData(maxSize: 25 * 1025 * 1025) { data, error in
+                   photoRef.getData(maxSize: 2 * 1024 * 1024) { data, error in
                        if let error = error {
                            print("*** ERROR: An error occurred while reading data from file ref: \(photoRef) \(error.localizedDescription)")
                            loadAttempts += 1

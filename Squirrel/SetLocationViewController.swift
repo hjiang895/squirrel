@@ -39,26 +39,26 @@ class SetLocationViewController: UIViewController {
         
     }
     
-    func loadPictionary(){
-        print("In function: loadPictionary")
+    func loadLocArray() {
         listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
         }
-        
-        print("successfully loaded your array")
-        print ("Size of locListingArray: \(self.listings.locationListingArray.count)")
+    }
+    
+    func loadPictionary(){
+        print("We are working with num listings \(self.listings.locationListingArray.count)")
         for listing in self.listings.locationListingArray {
-            self.photos.loadData(listing: listing){}
-            self.pictionary[listing.documentID] = self.photos.photo
-            print("size of pictionary \(pictionary.count)")
-            
+            print("Attempting load")
+            self.photos.loadData(listing: listing){
+                self.pictionary[listing.documentID] = self.photos.photo
+            }
         }
+        print("built pictionary with size \(self.pictionary.count)")
     }
     
     @IBAction func lookupLocationButtonPressed(_ sender: UIButton) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
-        //loadPictionary()
         
         
     }
@@ -68,11 +68,13 @@ class SetLocationViewController: UIViewController {
         
         searchRadiusLabel.text = "\(Int(sender.value)) \(Int(sender.value) == 1 ? "mile": "miles")"
         searchRadius = Int(sender.value)
-        //loadPictionary()
+        
+        loadLocArray()
     }
     
     @IBAction func nextBarButtonPressed(_ sender: UIBarButtonItem) {
-        //loadPictionary()
+        loadLocArray()
+        loadPictionary()
         performSegue(withIdentifier: "ShowListings", sender: nil)
     }
     
@@ -82,8 +84,9 @@ class SetLocationViewController: UIViewController {
             destination.searchRadius = searchRadius
             destination.currentLocation = currentLocation
             destination.listings = listings
-            //loadPictionary()
-            //destination.pictionary = self.pictionary
+            loadLocArray()
+            loadPictionary()
+            destination.pictionary = self.pictionary
         }
     }
 }

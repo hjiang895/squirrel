@@ -21,6 +21,12 @@ class ViewListingTableViewCell: UITableViewCell {
         // In;itialization code
         setupInterface()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.listingImageView.image = UIImage(named: "squirrel")
+    }
+    
     func setupInterface(){
         mainBackground.layer.cornerRadius = 10.0
         mainBackground.layer.masksToBounds = false

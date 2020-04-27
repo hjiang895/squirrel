@@ -16,7 +16,6 @@
 		BB5110A42452E083000928C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5110A32452E083000928C1 /* SceneDelegate.swift */; };
 		BB5110A62452E083000928C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5110A52452E083000928C1 /* ViewController.swift */; };
 		BB5110A92452E083000928C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5110A72452E083000928C1 /* Main.storyboard */; };
-		BB5110AB2452E086000928C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB5110AA2452E086000928C1 /* Assets.xcassets */; };
 		BB5110AE2452E086000928C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB5110AC2452E086000928C1 /* LaunchScreen.storyboard */; };
 		BB5110B82453A62D000928C1 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5110B72453A62D000928C1 /* Listing.swift */; };
 		BB5110BE2453B347000928C1 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5110BD2453B347000928C1 /* ListingDetailViewController.swift */; };
@@ -29,6 +28,8 @@
 		BB54B489245549EA005BA3A1 /* ViewListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54B488245549EA005BA3A1 /* ViewListingTableViewCell.swift */; };
 		BBA732D62453F54300A0BBE1 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA732D52453F54300A0BBE1 /* APIKey.swift */; };
 		BBA732D82453F67200A0BBE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBA732D72453F67200A0BBE1 /* GoogleService-Info.plist */; };
+		BBD783092456B5F700A97C78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBD783082456B5F700A97C78 /* Assets.xcassets */; };
+		BBD7830C2456B69400A97C78 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBD7830B2456B69400A97C78 /* assets.xcassets */; };
 		BBE4D4352454D9A0005EFDEC /* Listings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4D4342454D9A0005EFDEC /* Listings.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,6 @@
 		BB5110A32452E083000928C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BB5110A52452E083000928C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BB5110A82452E083000928C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BB5110AA2452E086000928C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB5110AD2452E086000928C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB5110AF2452E086000928C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB5110B72453A62D000928C1 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		BB54B488245549EA005BA3A1 /* ViewListingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingTableViewCell.swift; sourceTree = "<group>"; };
 		BBA732D52453F54300A0BBE1 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		BBA732D72453F67200A0BBE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBD783082456B5F700A97C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BBD7830B2456B69400A97C78 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		BBE4D4342454D9A0005EFDEC /* Listings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listings.swift; sourceTree = "<group>"; };
 		CE08E3CD80BA501E6AAEF8D2 /* Pods-Squirrel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squirrel.release.xcconfig"; path = "Target Support Files/Pods-Squirrel/Pods-Squirrel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 				BB5110A52452E083000928C1 /* ViewController.swift */,
 				BB5110A72452E083000928C1 /* Main.storyboard */,
 				BB54B48424551930005BA3A1 /* Photos.swift */,
+				BBD783082456B5F700A97C78 /* Assets.xcassets */,
 				BB54B48624551938005BA3A1 /* Photo.swift */,
 				BB5110C32453B429000928C1 /* HomeViewController.swift */,
 				BB41A7512453D91300C5B23B /* SetLocationViewController.swift */,
@@ -122,10 +125,10 @@
 				BB5110B72453A62D000928C1 /* Listing.swift */,
 				BBE4D4342454D9A0005EFDEC /* Listings.swift */,
 				BB41A7552453E54000C5B23B /* Double+roundTo.swift */,
-				BB5110AA2452E086000928C1 /* Assets.xcassets */,
 				BB5110AC2452E086000928C1 /* LaunchScreen.storyboard */,
 				BB5110AF2452E086000928C1 /* Info.plist */,
 				BBA732D72453F67200A0BBE1 /* GoogleService-Info.plist */,
+				BBD7830B2456B69400A97C78 /* assets.xcassets */,
 			);
 			path = Squirrel;
 			sourceTree = "<group>";
@@ -202,8 +205,9 @@
 			files = (
 				BB5110AE2452E086000928C1 /* LaunchScreen.storyboard in Resources */,
 				BBA732D82453F67200A0BBE1 /* GoogleService-Info.plist in Resources */,
-				BB5110AB2452E086000928C1 /* Assets.xcassets in Resources */,
 				BB5110A92452E083000928C1 /* Main.storyboard in Resources */,
+				BBD7830C2456B69400A97C78 /* assets.xcassets in Resources */,
+				BBD783092456B5F700A97C78 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

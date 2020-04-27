@@ -27,8 +27,14 @@ class ViewListingsViewController: UIViewController {
         
         
         listings.loadYourArray {
-            print("successfully loaded your array")
+            self.tableView.reloadData()
+            }
+        for listing in self.listings.selfListingArray {
+            self.photos.loadData(listing: listing) {
+                self.pictionary[listing.documentID] = self.photos.photo
+    }
         }
+            
         // Do any additional setup after loading the view.
     }
     
@@ -40,16 +46,7 @@ class ViewListingsViewController: UIViewController {
         //                // self.sortBasedOnSegmentPressed()
         //                self.tableView.reloadData()
         //            }
-        listings.loadYourArray {
-            print("successfully loaded your array")
-            self.tableView.reloadData()
-            for listing in self.listings.selfListingArray {
-                print("boofy beef")
-                self.photos.loadData(listing: listing){}
-                self.pictionary[listing.documentID] = self.photos.photo
-            }
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         //        for listing in listings.selfListingArray{
         //            photos.loadData(listing: listing) {
         //                print("Loaded Photos Successfully")
@@ -62,7 +59,7 @@ class ViewListingsViewController: UIViewController {
 extension ViewListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("This is the number of rows \(listings.selfListingArray.count)")
+        //print("This is the number of rows \(listings.selfListingArray.count)")
         return listings.selfListingArray.count
     }
     
@@ -82,15 +79,16 @@ extension ViewListingsViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.listingImageView.image = image.image*/
         
-        if pictionary[listing.documentID] == nil {
-            print("Could not find pictionary value")
+        /*if pictionary[listing.documentID] == nil {
             photos.loadData(listing: listing) {}
             cell.listingImageView.image = self.photos.photo.image
             pictionary[listing.documentID] = self.photos.photo
         } else {
-            print("did find pictionary value")
             cell.listingImageView.image = pictionary[listing.documentID]?.image
-        }
+        }*/
+        
+        let blank = UIImage(named: "tree") ?? UIImage()
+        cell.listingImageView.image = pictionary[listing.documentID]?.image ?? blank
         
         return cell
     }

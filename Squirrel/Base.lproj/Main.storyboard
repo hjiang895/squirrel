@@ -249,7 +249,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="lXr-IA-TLA">
-                                                    <rect key="frame" x="304" y="10" width="95" height="34"/>
+                                                    <rect key="frame" x="304" y="10" width="94" height="32"/>
                                                     <connections>
                                                         <action selector="pricesStepperChanged:" destination="SrO-co-w1s" eventType="valueChanged" id="8CG-4l-xfu"/>
                                                     </connections>
@@ -299,7 +299,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="3WL-4X-ulf">
-                                                    <rect key="frame" x="304" y="6" width="94" height="40"/>
+                                                    <rect key="frame" x="304" y="6" width="94" height="32"/>
                                                     <connections>
                                                         <action selector="boxesStepperChanged:" destination="SrO-co-w1s" eventType="valueChanged" id="Roq-iI-GDm"/>
                                                     </connections>
@@ -776,13 +776,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c2X-sz-Tgs">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="c2X-sz-Tgs">
                                 <rect key="frame" x="300" y="487.5" width="94" height="32"/>
                                 <connections>
                                     <action selector="boxStepperChanged:" destination="XwB-a7-o6B" eventType="valueChanged" id="4KJ-Mv-xZr"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="npf-pe-480">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="npf-pe-480">
                                 <rect key="frame" x="300" y="568" width="94" height="32"/>
                                 <connections>
                                     <action selector="dayStepperChanged:" destination="XwB-a7-o6B" eventType="valueChanged" id="1BH-je-iH9"/>

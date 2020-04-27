@@ -21,6 +21,11 @@ class ListingTableViewCell: UITableViewCell {
    
     var currentLocation: CLLocation!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.listingImageView.image = UIImage(named: "squirrel")
+    }
+    
     
     func configureCell(listing: Listing, photo: Photo){
         
