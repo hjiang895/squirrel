@@ -14,6 +14,7 @@ import GoogleSignIn
 class HomeViewController: UIViewController {
 
     var authUI: FUIAuth!
+    var listings = Listings()
     
     @IBOutlet weak var acornButton: UIButton!
     @IBOutlet weak var treeButton: UIButton!
@@ -38,9 +39,20 @@ class HomeViewController: UIViewController {
         treeButton.layer.cornerRadius = 20.0
         squirrelButton.layer.cornerRadius = 20.0
         
-        
-        
     }
+    
+    func loadSelfArray() {
+        listings.loadYourArray {}
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ViewListings" {
+            let destination = segue.destination as! ViewListingsViewController
+            loadSelfArray()
+            destination.listings = self.listings
+        }
+    }
+    
     func signIn() {
              let providers: [FUIAuthProvider] = [
                  FUIGoogleAuth(),]

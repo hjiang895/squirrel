@@ -49,12 +49,10 @@ class Listings {
             }
             self.locationListingArray = []
             //there are questSnapshot!.documents.count documents in the spots snapshot
-            print("\(searchRadius)")
             for document in querySnapshot!.documents {
                 let listing = Listing(dictionary: document.data())
                 let distanceInMeters = currentLocation.distance(from: listing.location)
                 let distanceInMiles = (distanceInMeters*0.00062137).roundTo(places: 1)
-                print("\(distanceInMiles)")
                 if(distanceInMiles <= Double(searchRadius)){
                     listing.documentID = document.documentID
                     self.locationListingArray.append(listing)

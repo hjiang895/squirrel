@@ -15,13 +15,29 @@ class ListingListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var image = Photo()
     var listings = Listings()
     var currentLocation: CLLocation!
     var photos = Photos()
     var searchRadius: Int!
     var pictionary: [String: Photo] = [:]
+    typealias didLoad = () -> ()
     
+    func loadListingPhoto(listing: Listing, completed: @escaping didLoad) {
+        self.photos.loadData(listing: listing) { () -> () in
+            self.pictionary[listing.documentID] = self.photos.photo
+            completed()
+        }
+    }
+    
+    func loadPictionary(completed: @escaping didLoad) {
+        listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {}
+        for listing in self.listings.locationListingArray {
+            loadListingPhoto(listing: listing) { () -> () in
+                self.tableView.reloadData()
+            }
+            completed()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,34 +45,8 @@ class ListingListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        loadPictionary {}
         
-        listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
-            self.tableView.reloadData()
-        }
-        
-        for listing in self.listings.locationListingArray {
-            self.photos.loadData(listing: listing){
-                self.pictionary[listing.documentID] = self.photos.photo
-            }
-        }
-//        for listing in self.listings.locationListingArray {
-//            self.photos.loadData(listing: listing){
-//                self.pictionary[listing.documentID] = self.photos.photo
-//            }
-//        }
-       // listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
-            //print("successfully loaded your array")
-            //print ("Size of locListingArray: \(self.listings.locationListingArray.count)")
-            //            for listing in self.listings.locationListingArray {
-            //                print("boofy beef")
-            //                self.photos.loadData(listing: listing){
-            //                self.pictionary[listing.documentID] = self.photos.photo
-            //            }
-            //self.tableView.reloadData()
-    //    }
-        
-        
-        self.tableView.reloadData()
         // Do any additional setup after loading the view.
         
     }
@@ -65,30 +55,17 @@ class ListingListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.sortBasedOnSegmentPressed()
-        
-        //          photos.loadData(listing: listing) {
-        //              print("Photo loaded!")
-//        listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {}
-//        for listing in self.listings.locationListingArray {
-//            self.photos.loadData(listing: listing){
-//                self.pictionary[listing.documentID] = self.photos.photo
-//            }
-//        }
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail" {
             let destination = segue.destination as! ListingDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow!
-            destination.listing = listings.locationListingArray[selectedIndexPath.row]
-            /*photos.loadData(listing: listings.locationListingArray[indexPath.row]){
-             }
-             
-             self.image = self.photos.photo*/
-            destination.photo = self.image
-            // destination.listingImageView.image = image.image ?? UIImage(named: "squirrel")
+            let listing = listings.locationListingArray[selectedIndexPath.row]
+            destination.listing = listing
+            destination.photo = self.pictionary[listing.documentID]
+            
         } else {
             print("***ERROR: Couldn't select the selected row")
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -111,35 +88,13 @@ extension ListingListViewController: UITableViewDataSource, UITableViewDelegate 
         if let currentLocation = currentLocation {
             cell.currentLocation = currentLocation
         }
-        cell.distanceLabel.text = ""//you can use the IBOutlets from SpotsTableViweCell because of the "as! SpotsTableViewCell"
-        if let currentLocation = currentLocation {
-            cell.currentLocation = currentLocation
-        }
-        
-        print("Loading image to cell")
+        cell.distanceLabel.text = ""
         
         let blank = Photo()
         blank.image = UIImage(named: "squirrel") ?? UIImage()
-        self.image = pictionary[listing.documentID] ?? blank
+        let image = pictionary[listing.documentID] ?? blank
         
-        /*if pictionary[listing.documentID] == nil {
-            photos.loadData(listing: listing) {}
-            self.image = self.photos.photo
-            pictionary[listing.documentID] = self.image
-        } else {
-            self.image = pictionary[listing.documentID]!
-        }*/
-        
-        
-        //self.image = self.photos.photo
-        
-        
-        /*photos.loadData(listing: listing){
-        }
-        self.image = self.photos.photo
-        pictionary[listing.documentID] = self.image*/
-        
-        cell.configureCell(listing: listings.locationListingArray[indexPath.row], photo: self.image)
+        cell.configureCell(listing: listings.locationListingArray[indexPath.row], photo: image)
         return cell
     }
     

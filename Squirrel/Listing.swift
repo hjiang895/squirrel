@@ -79,7 +79,6 @@ class Listing: NSObject {
     
     func saveData(completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
-        print("BEEEEEF")
         //Grab the userID
         guard let userID = (Auth.auth().currentUser?.uid) else {
             print("ERROR: Could not save data because we don't have a valid postingUserID")
@@ -90,7 +89,6 @@ class Listing: NSObject {
         let dataToSave = self.dictionary
         //if we have saved a record, we'll have a documentID
         if self.documentID != "" {
-            print("BOOF")
             let ref = db.collection("listings").document(self.documentID)
             ref.setData(dataToSave){ (error) in
                 if let error = error {
@@ -103,7 +101,6 @@ class Listing: NSObject {
             }
             
         }else {
-            print("BAAF")
             var ref: DocumentReference? = nil //let firestore create the new documentID
             ref = db.collection("listings").addDocument(data: dataToSave) {error in
                 if let error = error {

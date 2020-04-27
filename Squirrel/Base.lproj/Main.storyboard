@@ -65,7 +65,7 @@
                                     <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="kIs-iI-pRY" kind="show" id="h0u-Tc-BRv"/>
+                                    <segue destination="kIs-iI-pRY" kind="show" identifier="ViewListings" id="h0u-Tc-BRv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -404,7 +404,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUB-Y1-m86">
                                                     <rect key="frame" x="15.5" y="23" width="383" height="297"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="squirrel" translatesAutoresizingMaskIntoConstraints="NO" id="7LP-XC-jpS">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="squirrel" translatesAutoresizingMaskIntoConstraints="NO" id="7LP-XC-jpS">
                                                             <rect key="frame" x="0.0" y="0.0" width="383" height="223"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Boxes Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqM-8q-3YB">
@@ -951,7 +951,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oUE-wl-hRH"/>
+        <segue reference="h0u-Tc-BRv"/>
         <segue reference="EHY-Bc-J4a"/>
     </inferredMetricsTieBreakers>
     <resources>

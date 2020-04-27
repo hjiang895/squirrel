@@ -17,7 +17,23 @@ class ViewListingsViewController: UIViewController {
     var listings = Listings()
     var photos = Photos()
     var pictionary: [String: Photo] = [:]
-    //var locationManager: CLLocationManager!
+    typealias didLoad = () -> ()
+    
+    func loadListingPhoto(listing: Listing, completed: @escaping didLoad) {
+        self.photos.loadData(listing: listing) { () -> () in
+            self.pictionary[listing.documentID] = self.photos.photo
+            completed()
+        }
+    }
+    
+    func loadPictionary(completed: @escaping didLoad) {
+        for listing in self.listings.selfListingArray {
+            loadListingPhoto(listing: listing) { () -> () in
+                self.tableView.reloadData()
+            }
+        }
+        completed()
+    }
     
     
     override func viewDidLoad() {
@@ -25,14 +41,8 @@ class ViewListingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         listings.loadYourArray {
-            self.tableView.reloadData()
-            }
-        for listing in self.listings.selfListingArray {
-            self.photos.loadData(listing: listing) {
-                self.pictionary[listing.documentID] = self.photos.photo
-    }
+            self.loadPictionary {}
         }
             
         // Do any additional setup after loading the view.
@@ -42,16 +52,7 @@ class ViewListingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //            listings.loadData {
-        //                // self.sortBasedOnSegmentPressed()
-        //                self.tableView.reloadData()
-        //            }
-        self.tableView.reloadData()
-        //        for listing in listings.selfListingArray{
-        //            photos.loadData(listing: listing) {
-        //                print("Loaded Photos Successfully")
-        //            }
-        //        }
+        //self.tableView.reloadData()
     }
     
     
@@ -59,7 +60,6 @@ class ViewListingsViewController: UIViewController {
 extension ViewListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("This is the number of rows \(listings.selfListingArray.count)")
         return listings.selfListingArray.count
     }
     
@@ -70,22 +70,6 @@ extension ViewListingsViewController: UITableViewDelegate, UITableViewDataSource
         cell.locationLabel.text = "\(listing.city), \(listing.state)"
         cell.priceLabel.text = "$\(listing.price)/Box"
        
-        
-        /*var image = Photo()
-        
-        photos.loadData(listing: listings.selfListingArray[indexPath.row]){
-            image = self.photos.photo 
-        }
-        
-        cell.listingImageView.image = image.image*/
-        
-        /*if pictionary[listing.documentID] == nil {
-            photos.loadData(listing: listing) {}
-            cell.listingImageView.image = self.photos.photo.image
-            pictionary[listing.documentID] = self.photos.photo
-        } else {
-            cell.listingImageView.image = pictionary[listing.documentID]?.image
-        }*/
         
         let blank = UIImage(named: "tree") ?? UIImage()
         cell.listingImageView.image = pictionary[listing.documentID]?.image ?? blank

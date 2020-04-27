@@ -34,11 +34,6 @@ class ListingDetailViewController: UIViewController {
         }
         
         self.updateInterface()
-        print("$\(listing.price)")
-        print("\(listing.name)")
-        print("\(listing.numBoxesAvailable) boxes")
-        
-        
     }
     
     func updateInterface(){
@@ -74,7 +69,7 @@ class ListingDetailViewController: UIViewController {
     }
     
     func calcTotalPrice(){
-        var totalPrice = Int(boxStepper.value) * Int(dayStepper.value) * listing.price
+        let totalPrice = Int(boxStepper.value) * Int(dayStepper.value) * listing.price
         totalPriceLabel.text = "Total: $\(totalPrice)"
     }
 }

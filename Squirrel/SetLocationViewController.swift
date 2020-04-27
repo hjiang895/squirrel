@@ -43,17 +43,7 @@ class SetLocationViewController: UIViewController {
         listings.loadLocationArray(searchRadius: searchRadius, currentLocation: currentLocation) {
         }
     }
-    
-    func loadPictionary(){
-        print("We are working with num listings \(self.listings.locationListingArray.count)")
-        for listing in self.listings.locationListingArray {
-            print("Attempting load")
-            self.photos.loadData(listing: listing){
-                self.pictionary[listing.documentID] = self.photos.photo
-            }
-        }
-        print("built pictionary with size \(self.pictionary.count)")
-    }
+
     
     @IBAction func lookupLocationButtonPressed(_ sender: UIButton) {
         let autocompleteController = GMSAutocompleteViewController()
@@ -74,7 +64,6 @@ class SetLocationViewController: UIViewController {
     
     @IBAction func nextBarButtonPressed(_ sender: UIBarButtonItem) {
         loadLocArray()
-        loadPictionary()
         performSegue(withIdentifier: "ShowListings", sender: nil)
     }
     
@@ -83,10 +72,8 @@ class SetLocationViewController: UIViewController {
             let destination = segue.destination as! ListingListViewController
             destination.searchRadius = searchRadius
             destination.currentLocation = currentLocation
-            destination.listings = listings
             loadLocArray()
-            loadPictionary()
-            destination.pictionary = self.pictionary
+            destination.listings = listings
         }
     }
 }
